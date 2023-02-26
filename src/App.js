@@ -1,25 +1,62 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import {Link} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Innovation from './components/Innovation';
+import WhoWeAre from './components/WhoWeAre'
+import WhatWeDo from './components/WhatWeDo';
+import ProductsAndServices from './components/ProductsAndServices';
+import NotFound from './components/NotFound';
+import Safety from './components/Safety';
+import Sustainability from './components/Sustainability';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import UpperHeadNavbar from './components/UpperHeadNavbar';
 
-function App() {
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <Router>
+          <div className="App">
+            
+            <Navbar />
+            <div className="content">
+              <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/WhoWeAre">
+                <WhoWeAre />
+              </Route>
+              <Route exact path="/WhatWeDo">
+                <WhatWeDo />
+              </Route>
+              <Route exact path="/Innovation">
+                <Innovation />
+              </Route>
+              <Route exact path="/Sustainability">
+                <Sustainability />
+              </Route>
+              <Route exact path="/ProductsAndServices">
+                <ProductsAndServices />
+              </Route>
+              <Route exact path="/Safety">
+                <Safety />
+              </Route>
+
+              <Route path="*">
+                <NotFound />
+              </Route>
+
+              </Switch>
+              
+            </div>
+          </div>
+        </Router>
+  )
 }
 
+
 export default App;
+
